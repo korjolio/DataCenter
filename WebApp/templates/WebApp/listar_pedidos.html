@@ -1,0 +1,64 @@
+{% extends "WebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div style="width: 80%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 2%;">
+        <h2 class="display-5">Listado de Pedidos</h2>
+        <hr class="my-4">
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Tipo Plan</th>
+      <th scope="col">Vigencia</th>
+      <th scope="col">Dominio</th>
+      <th scope="col">Certificado SSL</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido Paterno</th>
+      <th scope="col">Apellido Materno</th>
+      <th scope="col">RUT</th>
+      <th scope="col">Email</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pedidos %}
+    <tr>
+      <td>{{ p.tipo_plan }}</td>
+      <td>{{ p.vigencia }}</td>
+      <td>{{ p.dominio }}</td>
+      <td>{{ p.cert_ssl }}</td>
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.a_paterno }}</td>
+      <td>{{ p.a_materno }}</td>
+      <td>{{ p.rut }}</td>
+      <td>{{ p.email }}</td>
+      <td>
+        <a href="{% url 'EliminarPedido' p.id %}" button type="button" class="btn btn-danger">Eliminar</button>
+        
+
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if messages %}
+    {% for m in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{ m }}
+    </div>
+    {% endfor %}
+{% endif %}
+        
+
+
+
+
+    </div>
+    </div>
+
+
+{% endblock %}
