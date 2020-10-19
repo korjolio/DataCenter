@@ -2,28 +2,34 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
-<div style="width: 75%; color: white; font-family: 'Raleway' ;margin:auto; text-align: center;">
-
-    <div class="container p-3 my-3 border">
-        <h2>Autenticación</h2>
-        <br>
+<div style="width: 50%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 10%;">
+        <h2 class="display-5">Autenticación</h2>
+        <hr class="my-4">
         {% if form.errors %}
-        <p>Tu usuario y contraseña no coinciden. Intenta nuevamente</p>
+        <div class="alert alert-danger" role="alert">Tu usuario y contraseña no coinciden. Intenta nuevamente.</div>
         {% endif %}
 
         {% if next %}
         {% if user.is_authenticated %}
         <p>Tu cuenta no tiene acceso a esta página. Para proceder, por favor logueate con una cuenta que tenga este acceso.</p>
         {% else %}
-        <p>Por favor logueate para ver esta página</p>
+        <div class="alert alert-warning" role="alert">
+            Por favor <strong>inicia sesión</strong> para ver esta página
+          </div>
         {% endif %}
         {% endif %}
+
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Iniciar sesión">           
+            {{ form | crispy}}
+            <br>
+            <button type="submit" class="btn btn-success">Iniciar sesión</button>
+            <input type="hidden" name="next" value="{{ next }}">
         </form>
         <br>
         <br>
