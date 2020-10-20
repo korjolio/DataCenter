@@ -13,6 +13,7 @@ urlpatterns = [
     path('registro/', views.registro_usuario, name="Registro"),
     path('listar-pedidos/', views.listar_pedidos, name="ListarPedidos"),
     path('eliminar-pedido/<id>/', views.eliminar_pedido, name="EliminarPedido"),
+    path('modificar-pedidos/<id>/', views.modificar_pedidos, name="ModificarPedidos")
     
 ]
 

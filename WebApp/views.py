@@ -68,3 +68,18 @@ def eliminar_pedido(request, id):
         messages.error(request, mensaje)
     
     return redirect('ListarPedidos')
+
+
+def modificar_pedidos(request, id):
+    pedido = Pedido.objects.get(id=id)
+    data = {
+        'form':PedidoForm(instance=pedido)
+    }
+    if request.method == 'POST':
+        formulario = PedidoForm(data=request.POST, instance=pedido)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Registro modificado correctamente"
+            data['form'] = formulario
+
+    return render(request, 'WebApp/modificar_pedidos.html', data)
