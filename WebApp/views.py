@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import CustomUserForm, PedidoForm
+from .forms import CustomUserForm, PedidoForm, ContactoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from .models import Pedido
@@ -34,7 +34,18 @@ def tienda(request):
 
 
 def contacto(request):
-    return render(request, 'WebApp/contacto.html')
+    data = {
+        'form': ContactoForm()
+    }
+    if request.method == 'POST':
+        formulario = ContactoForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Su formulario de contacto ha sido recibido de forma exitosa")
+        else:
+            data['form'] = formulario
+
+    return render(request, 'WebApp/contacto.html', data)
 
 
 
@@ -47,11 +58,12 @@ def registro_usuario(request):
         if formulario.is_valid():
             formulario.save()
             # Autenticar al usario y redirigirlo al inicio logueado
-            #username = formulario.cleaned_data('username')
-            #password = formulario.cleaned_data('password1')
-            #user = authenticate(username=username, password=password)
-            #login(request, user)
-            #return redirect(to='home')
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Su registro ha sido exitoso")
+            return redirect(to='Home')
+        else:
+            data['form'] = formulario
     return render(request, 'registration/registrar.html', data)
 
 
@@ -59,7 +71,6 @@ def registro_usuario(request):
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all()
-
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(pedidos, 5)
@@ -74,9 +85,9 @@ def listar_pedidos(request):
 
     return render(request, 'WebApp/listar_pedidos.html', data)
 
+
 def eliminar_pedido(request, id):
     pedido = Pedido.objects.get(id=id)
-
     try:
         pedido.delete()
         mensaje = "Eliminado correctamente"
@@ -103,6 +114,5 @@ def modificar_pedidos(request, id):
             return redirect('ListarPedidos')
         else:
             data['form'] = formulario
-
 
     return render(request, 'WebApp/modificar_pedidos.html', data)

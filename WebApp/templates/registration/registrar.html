@@ -6,32 +6,22 @@
 
 {% block content %}
 
-
 <div style="width: 50%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px;">
-    <div class="jumbotron" style="padding: 10%;">
+    <div class="jumbotron" style="padding: 5%;">
         <h2 class="display-5">Registro de usuarios</h2>
         <hr class="my-4">
-        {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            Tu usuario y contraseña no coinciden. Intenta nuevamente
-        </div>
-        {% endif %}
+        
         <form action="" method="POST">
+            
             {% csrf_token %}
 
-            {{ form | crispy}}
+            {{ form | crispy }}
 
+            <a href="{% url 'Home'%}"> Ir al Home</a> |
+            <a href="{% url 'login'%}"> Iniciar Sesión</a>
+            <button type="submit" class="btn btn-success float-right">Registrar</button>
             
-            
-            <button type="reset" class="btn btn-warning">Limpiar</button>
-            <button type="submit" class="btn btn-success">Registrar</button>
-
-
         </form>
-
-
-
-
     </div>
 </div>
 

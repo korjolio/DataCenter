@@ -3,7 +3,7 @@ from django.forms import ModelForm
 import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Pedido
+from .models import Pedido, Contacto
 
 
 class CustomUserForm(UserCreationForm):
@@ -23,6 +23,12 @@ class PedidoForm(ModelForm):
             'dominio': forms.TextInput(
                 attrs={'placeholder': 'http://www.mi-dominio.cl'}
             ),
-            'cert_ssl': forms.RadioSelect,
+            
             'rut': forms.TextInput(attrs={"oninput":"checkRut(this)"}),
         }
+
+
+class ContactoForm(ModelForm):
+    class Meta:
+        model = Contacto
+        fields = '__all__'

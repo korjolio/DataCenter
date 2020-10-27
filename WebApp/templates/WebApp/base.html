@@ -59,7 +59,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li>
-                        <a class="nav-link text-uppercase text-expanded" href="#">Usuario: {{user.username}} </a>
+                        <a class="nav-link text-uppercase text-expanded" href="#">@{{user.username}} </a>
                     </li>
                     <li>
                         <a class="nav-link text-uppercase text-expanded" href="{% url 'logout' %}">Cerrar sesión</a>
