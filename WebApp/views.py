@@ -21,7 +21,12 @@ def tienda(request):
         formulario = PedidoForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = "Pedido guardado correctamente"
+            messages.success(request, "Pedido registrado exitosamente")
+            #data['mensaje'] = "Pedido guardado correctamente"
+        else:
+            data['form'] = formulario
+            #messages.error(request, "El formulario de pedido contiene errores")
+            #data['mensaje'] = "EL PEDIDO NO HA SIDO PROCESADO"
     return render(request, 'WebApp/tienda.html', data)
 
 
@@ -79,7 +84,12 @@ def modificar_pedidos(request, id):
         formulario = PedidoForm(data=request.POST, instance=pedido)
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = "Registro modificado correctamente"
+            messages.success(request, "Registro modificado correctamente")
+            #data['mensaje'] = "Registro modificado correctamente"
+            #data['form'] = formulario
+            return redirect('ListarPedidos')
+        else:
             data['form'] = formulario
+        
 
     return render(request, 'WebApp/modificar_pedidos.html', data)

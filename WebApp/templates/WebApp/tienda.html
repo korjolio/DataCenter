@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block js %}
+<script type=text/javascript src="validaRut.js"></script>
+{% endblock %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -10,18 +14,16 @@
     <div class="jumbotron" style="padding: 2%;">
         <h2 class="display-5">Registro de pedidos</h2>
         <hr class="my-4">
+
         <form action="" method="POST">
         {% csrf_token %}
-            
-           {{ form | crispy}}
-
+        {{ form | crispy}}
+     
         <button type="reset" class="btn btn-warning">Limpiar</button>
         <button type="submit" class="btn btn-success">Registrar</button>
-        </form>
+        </form> 
         <br>
-        <div class="alert alert-primary" role="alert">{{ mensaje }}</div>
-        
-
     </div>
 </div>
+
 {% endblock %}
