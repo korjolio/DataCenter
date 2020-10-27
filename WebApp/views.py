@@ -5,6 +5,8 @@ from django.contrib.auth import login, authenticate
 from .models import Pedido
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.core.paginator import Paginator
+from django.http import Http404
 
 # Create your views here.
 
@@ -57,9 +59,20 @@ def registro_usuario(request):
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all()
-    return render(request, 'WebApp/listar_pedidos.html', {
-        'pedidos':pedidos
-    })
+
+    page = request.GET.get('page', 1)
+    try:
+        paginator = Paginator(pedidos, 5)
+        pedidos = paginator.page(page)
+    except:
+        raise Http404
+
+    data = {
+        'entity': pedidos,
+        'paginator': paginator
+    }
+
+    return render(request, 'WebApp/listar_pedidos.html', data)
 
 def eliminar_pedido(request, id):
     pedido = Pedido.objects.get(id=id)
@@ -71,7 +84,7 @@ def eliminar_pedido(request, id):
     except:
         mensaje = "No se ha podido eliminar"
         messages.error(request, mensaje)
-    
+
     return redirect('ListarPedidos')
 
 
@@ -90,6 +103,6 @@ def modificar_pedidos(request, id):
             return redirect('ListarPedidos')
         else:
             data['form'] = formulario
-        
+
 
     return render(request, 'WebApp/modificar_pedidos.html', data)

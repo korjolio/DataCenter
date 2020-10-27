@@ -1,7 +1,7 @@
 {% extends "WebApp/base.html" %}
 
 {% block js %}
-  
+
   <script>
     function EliminarPedido(id){
       Swal.fire({
@@ -23,7 +23,6 @@
   </script>
 
 {% endblock %}
-
 
 {% load static %}
 
@@ -49,7 +48,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for p in pedidos %}
+    {% for p in entity %}
     <tr>
       <td>{{ p.tipo_plan }}</td>
       <td>{{ p.vigencia }}</td>
@@ -69,6 +68,10 @@
     {% endfor %}
   </tbody>
       </table>
+      <hr>
+      <div class="">
+        {% include 'WebApp/paginator.html' %}
+      </div>
    </div>
 </div>
 

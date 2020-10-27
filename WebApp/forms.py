@@ -24,5 +24,5 @@ class PedidoForm(ModelForm):
                 attrs={'placeholder': 'http://www.mi-dominio.cl'}
             ),
             'cert_ssl': forms.RadioSelect,
-            'rut': forms.TextInput(attrs={"oninput":"checkRut(this)"})
+            'rut': forms.TextInput(attrs={"oninput":"checkRut(this)"}),
         }
