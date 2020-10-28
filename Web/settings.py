@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'es-cl'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -138,3 +138,11 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#CONFIGURACIÓN SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'ppbugueno@gmail.com'
+EMAIL_HOST_PASSWORD = 'vzopsyytsqpvbwow'
