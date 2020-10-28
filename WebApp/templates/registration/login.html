@@ -29,7 +29,7 @@
             {% csrf_token %}
             {{ form | crispy}}
             <br>
-            <a href="{% url 'Home'%}"> Ir al Home</a>
+            <a href="{% url 'password_reset'%}">Olvide mi contraseña</a>
             <button type="submit" class="btn btn-success float-right">Iniciar sesión</button>
             <input type="hidden" name="next" value="{{ next }}">
         </form>
