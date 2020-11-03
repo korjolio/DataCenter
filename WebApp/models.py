@@ -1,22 +1,21 @@
 from django.db import models
-
 # Create your models here.
 
 class Pedido(models.Model):
     alt_tipo_plan = (
-        ('Wordpress SSD', 'Wordpress SSD'),
-        ('Basico SSD', 'Basico SSD'),
-        ('Emprendedor SSD', 'Emprendedor SSD'),
-        ('Corporativo SSD', 'Corporativo SSD'),
+        (24990, 'Wordpress SSD'),
+        (34990, 'Basico SSD'),
+        (44990, 'Emprendedor SSD'),
+        (54990, 'Corporativo SSD'),
     )
-    tipo_plan = models.CharField(max_length=50, choices=alt_tipo_plan)
+    tipo_plan = models.IntegerField(max_length=2, choices=alt_tipo_plan)
     alt_vig = (
-        ('1 año', '1 año'),
-        ('2 años', '2 años'),
-        ('3 años', '3 años'),
-        ('4 años', '4 años'),
+        (1, '1 año'),
+        (2, '2 años'),
+        (3, '3 años'),
+        (4, '4 años'),
     )
-    vigencia = models.CharField(max_length=50, choices=alt_vig)
+    vigencia = models.IntegerField(max_length=2, choices=alt_vig)
     dominio = models.URLField(max_length=100)
     cert_ssl = models.BooleanField(blank=True, verbose_name='¿Requiere Certificado SSL?')
     nombre = models.CharField(max_length=100)
@@ -31,6 +30,12 @@ class Pedido(models.Model):
 
     def __str__(self):
         return self.tipo_plan
+
+    def calculo(self):
+        if self.cert_ssl == False:
+            return self.tipo_plan * self.vigencia
+        else:
+            return self.tipo_plan * self.vigencia + 10000
 
 
 class Contacto(models.Model):

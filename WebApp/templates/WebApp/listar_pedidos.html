@@ -28,8 +28,8 @@
 
 {% block content %}
 
-<div style="width: 80%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px;">
-    <div class="jumbotron" style="padding: 2%;">
+<div style="width: 98%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 1%;">
         <h2 class="display-5">Listado de Pedidos</h2>
         <hr class="my-4">
         <table class="table table-hover">
@@ -38,20 +38,41 @@
       <th scope="col">Tipo Plan</th>
       <th scope="col">Vigencia</th>
       <th scope="col">Dominio</th>
-      <th scope="col">Certificado SSL</th>
+      <th scope="col">¿Requiere SSL?</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Apellido Paterno</th>
-      <th scope="col">Apellido Materno</th>
+      <th scope="col">A. Paterno</th>
+      <th scope="col">A. Materno</th>
       <th scope="col">RUT</th>
       <th scope="col">Email</th>
+      <th scope="col">Total</th>
       <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
     {% for p in entity %}
     <tr>
-      <td>{{ p.tipo_plan }}</td>
-      <td>{{ p.vigencia }}</td>
+      <td>
+        {% if p.tipo_plan == 24990 %}
+          Wordpress SSD
+        {% elif p.tipo_plan == 34990 %}
+          Basico SSD
+        {% elif p.tipo_plan == 44990 %}
+          Emprendedor SSD
+        {% elif p.tipo_plan == 54990 %}
+          Corporativo SSD
+        {% endif %}
+      </td>
+      <td>
+        {% if p.vigencia == 1 %}
+          1 año
+        {% elif p.vigencia == 2 %}
+          2 años
+        {% elif p.vigencia == 3 %}
+          3 años
+        {% elif p.vigencia == 4 %}
+          4 años
+        {% endif %}
+      </td>
       <td>{{ p.dominio }}</td>
       <td>
         {% if p.cert_ssl %}
@@ -65,6 +86,9 @@
       <td>{{ p.a_materno }}</td>
       <td>{{ p.rut }}</td>
       <td>{{ p.email }}</td>
+      <td>
+        ${{ p.calculo }}
+      </td>
       <td>
         <a href="#" onclick="EliminarPedido({{ p.id }})" button type="button" class="btn btn-danger">Eliminar</button>
         &nbsp;

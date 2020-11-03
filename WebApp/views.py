@@ -14,7 +14,7 @@ from django.http import Http404
 def home(request):
     return render(request, 'WebApp/home.html')
 
-@login_required
+
 def tienda(request):
     data = {
         'form':PedidoForm()
@@ -69,6 +69,7 @@ def registro_usuario(request):
 
 # CRUD Pedidos
 
+@login_required
 def listar_pedidos(request):
     pedidos = Pedido.objects.all()
     page = request.GET.get('page', 1)
