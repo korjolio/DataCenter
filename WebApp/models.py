@@ -8,14 +8,14 @@ class Pedido(models.Model):
         (44990, 'Emprendedor SSD'),
         (54990, 'Corporativo SSD'),
     )
-    tipo_plan = models.IntegerField(max_length=2, choices=alt_tipo_plan)
+    tipo_plan = models.IntegerField(choices=alt_tipo_plan)
     alt_vig = (
         (1, '1 año'),
         (2, '2 años'),
         (3, '3 años'),
         (4, '4 años'),
     )
-    vigencia = models.IntegerField(max_length=2, choices=alt_vig)
+    vigencia = models.IntegerField(choices=alt_vig)
     dominio = models.URLField(max_length=100)
     cert_ssl = models.BooleanField(blank=True, verbose_name='¿Requiere Certificado SSL?')
     nombre = models.CharField(max_length=100)
@@ -29,7 +29,7 @@ class Pedido(models.Model):
         verbose_name_plural='Pedidos'
 
     def __str__(self):
-        return self.tipo_plan
+        return str(self.tipo_plan)
 
     def calculo(self):
         if self.cert_ssl == False:
