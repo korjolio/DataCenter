@@ -1,0 +1,30 @@
+{% extends 'WebApp/base.html' %}
+
+{% load static %}
+
+{% block mensaje %}
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title":"Lo sentimos",
+                    "text":"Login cancelado",
+                    "icon":"warning",
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div style="width: 80%; font-family: 'Raleway' ; margin:auto; margin-top: 20px; margin-bottom: 20px; text-align: center; ">
+    <div class="jumbotron" style="padding: 5%;">
+        <h2 class="display-5">¡Error!</h2>
+        <hr class="my-4">
+        <h3>El login mediante facebook ha sido cancelado, por favor, intenta nuevamente.</h3>
+        
+    </div>
+</div>
+
+{% endblock %}

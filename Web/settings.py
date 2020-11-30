@@ -26,12 +26,18 @@ SECRET_KEY = '-ot%i_rkd)(g*h_t_uc^-xv4f895$7jbeyp(#whr!)mg!ackd('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = "721138148496809"
+SOCIAL_AUTH_FACEBOOK_SECRET = "7c7db056bfaa3beefbc3d6983232eb5b"
+
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+LOGIN_ERROR_URL = '/login-facebook-error/'
 
 
 # Application definition
@@ -48,6 +54,8 @@ INSTALLED_APPS = [
     'blog',
     'crispy_forms',
     'rest_framework',
+    'social_django',
+    'pwa',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -60,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Web.urls'
@@ -75,9 +84,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', 
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
+]
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] 
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {  
+  'fields': 'id, name, email, picture.type(large), link'
+}
+
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [               
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
 ]
 
 WSGI_APPLICATION = 'Web.wsgi.application'
@@ -147,3 +172,22 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'ppbugueno@gmail.com'
 EMAIL_HOST_PASSWORD = 'vzopsyytsqpvbwow'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+PWA_APP_NAME = "Web Datacenter"
+PWA_APP_DESCRIPTION = "Adquiere tu hosting fácil y rápido"
+PWA_APP_THEME_COLOR = "#3477f5"
+PWA_APP_BACKGROUND = "#6699f7"
+
+PWA_APP_ICONS = [
+    {
+        "src": "/static/WebApp/img/pp.jpg",
+        "sizes": "160x160"
+    }
+]
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "serviceworker.js")

@@ -17,7 +17,8 @@ urlpatterns = [
     path('listar-pedidos/', views.listar_pedidos, name="ListarPedidos"),
     path('eliminar-pedido/<id>/', views.eliminar_pedido, name="EliminarPedido"),
     path('modificar-pedidos/<id>/', views.modificar_pedidos, name="ModificarPedidos"),
-    path('api/', include(router.urls)),   
+    path('api/', include(router.urls)),
+    path('login-facebook-error/', views.login_facebook_error, name="LoginFacebookError"),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

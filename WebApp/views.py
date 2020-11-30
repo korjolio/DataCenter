@@ -123,3 +123,7 @@ def modificar_pedidos(request, id):
             data['form'] = formulario
 
     return render(request, 'WebApp/modificar_pedidos.html', data)
+
+
+def login_facebook_error(request):
+    return render(request, 'registration/login_facebook_error.html')

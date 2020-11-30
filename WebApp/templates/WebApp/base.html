@@ -17,7 +17,11 @@
 
 
     <!-- Styles -->
-    <link href="{% static 'WebApp/css/gestion.css' %}" rel="stylesheet">
+    <link href="{% static 'WebApp/css/estilos.css' %}" rel="stylesheet">
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
 </head>
 
 <body>
@@ -58,6 +62,13 @@
                         <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Blog</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li>
+                        {% for auth in backends.associated %}
+                            {% if auth.provider == 'facebook' %}
+                            <img src="{{ auth.extra_data.picture.data.url }}" alt="" width="50" height="50">
+                            {% endif %}
+                        {% endfor %}
+                    </li>
                     <li>
                         <a class="nav-link text-uppercase text-expanded" href="#">@{{user.username}} </a>
                     </li>
@@ -125,17 +136,19 @@
         <!-- Sweet Alert-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        {% if messages %}
-            {% for m in messages %}
-                <script>
-                    Swal.fire({
-                        "title":"Felicitaciones",
-                        "text":"{{m}}",
-                        "icon":"success",
-                    })
-                </script>
-            {% endfor %}
-        {% endif %}
+        {% block mensaje %}
+            {% if messages %}
+                {% for m in messages %}
+                    <script>
+                        Swal.fire({
+                            "title":"Felicitaciones",
+                            "text":"{{m}}",
+                            "icon":"success",
+                        })
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
 
         {% block js %}
         {% endblock %}
