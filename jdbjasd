@@ -1,0 +1,132 @@
+[33mcommit b80704bb8dc7f5e82a53c1d9c81a1c67cb002560[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Nov 3 17:29:35 2020 -0300
+
+    Actualizacion del tests.py
+
+[33mcommit 34ba7d73ef3d4f4a321d95c8fd07b38b2cd531fb[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Nov 3 16:56:50 2020 -0300
+
+    actualizacion tests.py
+
+[33mcommit 85da3eeadf4e18787ac6a9ad636f8b3d48f4ac35[m[33m ([m[1;33mtag: v1.3.0[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Nov 3 13:57:05 2020 -0300
+
+    Insertando total en los pedidos
+
+[33mcommit 7ce7070820dfb4738225488597cacc86886d6d1d[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Nov 3 13:00:23 2020 -0300
+
+    Agregando calculo del total del pedido
+
+[33mcommit 6d23190fb6245332ca02f46ce28750cccb4ca56a[m
+Author: Pedro-Pablo Bugueño <45772709+korjolio@users.noreply.github.com>
+Date:   Tue Oct 27 23:49:44 2020 -0300
+
+    Create README.md
+
+[33mcommit c8148269e9eb394f525f91e1e38d96c3be3e40c7[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 23:26:23 2020 -0300
+
+    Commit olvidado
+
+[33mcommit 3d2e617320492fcfffb3320344a04946d2c1c159[m[33m ([m[1;31morigin/reset_password[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 23:19:20 2020 -0300
+
+    Reestablecer contraseña OK
+
+[33mcommit a3bbd6d31f6e42cb41da91c3ed8e2825d72812e2[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 23:07:08 2020 -0300
+
+    Configurando SMTP en settings.py
+
+[33mcommit 233d810169bf3922a0191b67de0017919b322e20[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 15:01:39 2020 -0300
+
+    Agregando REQUERIMENTS.TXT
+
+[33mcommit 40e7935d01fdece58da9b8b54fc53d6fe6736c62[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 14:59:43 2020 -0300
+
+    Se agrega formulario de contacto y se logra validar el rut del FORMS con javascript
+
+[33mcommit 3418f1deea0906a6f271577b8b852d7c6e1323ed[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 09:47:11 2020 -0300
+
+    Agregando paginador para los pedidos
+
+[33mcommit d9568c6d4263620391fe9de1e59363bf3c05d903[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 27 01:52:06 2020 -0300
+
+    Integrando Sweet Alert 2
+
+[33mcommit c876db50f6d1a27729a46f34a6a89b83f0e64c50[m[33m ([m[1;33mtag: v1.2.0[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Tue Oct 20 15:52:54 2020 -0300
+
+    Formulaio de modificacion de pedidos, botones y alertas faltantes
+
+[33mcommit 18047cafb3a77b38dd6cebca8ea1f8a7ade1ff98[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sun Oct 18 22:34:42 2020 -0300
+
+    Incluyendo los archivos pendientes del commit anterior
+
+[33mcommit a8cc977daab846b70378d44ea864b1257d27da04[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sun Oct 18 22:34:00 2020 -0300
+
+    Incluyendo formulario de nuevos pedidos y CRUD (sin boton de modificar)
+
+[33mcommit 785b1b719d63a10a5411d295033151a2dafe7851[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 21:32:15 2020 -0300
+
+    Incorporación del inicio de sesion
+
+[33mcommit ac8278497742d691e006287bbef498a00dcf6a27[m[33m ([m[1;33mtag: v1.1.0[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 19:33:29 2020 -0300
+
+    Imagenes pendientes de commitear
+
+[33mcommit f0fcc098732add61935f53ba2e63f839e4f4b9b2[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 19:31:50 2020 -0300
+
+    Cambio a base de datos MySQL, creación del superusuario, servicios, posts y categorias
+
+[33mcommit ae3a53dac9ed2518d0c978da11b263c0cbae14fa[m
+Merge: 1a09383 eccee10
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 15:48:02 2020 -0300
+
+    Merge branch 'main' of https://github.com/korjolio/Datacenter into main
+
+[33mcommit 1a0938347cc4592ddb97de79c67e42edd0398c2f[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 15:41:54 2020 -0300
+
+    Se modifico el Home utilizando Lorem
+
+[33mcommit eccee10ea7894c5427ff16eb5353e080017d6445[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Sat Oct 17 15:41:54 2020 -0300
+
+    Se modificó el Home, utilizando Lorem
+
+[33mcommit b9c17329ec40ad7f4276f31910625636441b39bf[m[33m ([m[1;33mtag: v1.0.0[m[33m)[m
+Author: pepo <ppbugueno@gmail.com>
+Date:   Thu Oct 15 19:18:29 2020 -0300
+
+    Primer commit del proyecto

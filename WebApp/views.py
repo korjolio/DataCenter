@@ -7,8 +7,14 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
 from django.http import Http404
+from rest_framework import viewsets
+from .serializers import PedidoSerializer
 
 # Create your views here.
+
+class PedidoViewset(viewsets.ModelViewSet):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
 
 
 def home(request):

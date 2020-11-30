@@ -1,10 +1,13 @@
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
 from WebApp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from .views import PedidoViewset
 
+router = routers.DefaultRouter()
+router.register('pedido', PedidoViewset)
 
 urlpatterns = [
     path('', views.home, name="Home"),
@@ -13,8 +16,8 @@ urlpatterns = [
     path('registro/', views.registro_usuario, name="Registro"),
     path('listar-pedidos/', views.listar_pedidos, name="ListarPedidos"),
     path('eliminar-pedido/<id>/', views.eliminar_pedido, name="EliminarPedido"),
-    path('modificar-pedidos/<id>/', views.modificar_pedidos, name="ModificarPedidos")
-    
+    path('modificar-pedidos/<id>/', views.modificar_pedidos, name="ModificarPedidos"),
+    path('api/', include(router.urls)),   
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
